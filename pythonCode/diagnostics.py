@@ -12,15 +12,17 @@ from __future__ import absolute_import, division, print_function
 import numpy as np
 
 # Import the special package for the erf function
-from scipy import special
+## from scipy import special
+import math
 
 def analyticErf(x, Kt, alpha, beta):
     "The analytic solution of the 1d diffusion equation with diffuions"
     "coeffienct K at time t assuming top-hat initial conditions which are"
     "one between alpha and beta and zero elsewhere"
-    
-    phi = 0.5 * special.erf((x-alpha)/np.sqrt(4*Kt))  \
-        - 0.5 * special.erf((x-beta )/np.sqrt(4*Kt))
+    #erf can be found in math
+    #however, this version does not accept arrays as an argument
+    phi = 0.5 * math.erf((x-alpha)/np.sqrt(4*Kt))  \
+        - 0.5 * math.erf((x-beta )/np.sqrt(4*Kt))
     return phi
 
 
